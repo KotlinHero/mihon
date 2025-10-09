@@ -38,7 +38,6 @@ import eu.kanade.tachiyomi.util.chapter.filterDownloaded
 import eu.kanade.tachiyomi.util.chapter.removeDuplicates
 import eu.kanade.tachiyomi.util.editCover
 import eu.kanade.tachiyomi.util.lang.byteSize
-import eu.kanade.tachiyomi.util.lang.takeBytes
 import eu.kanade.tachiyomi.util.storage.DiskUtil
 import eu.kanade.tachiyomi.util.storage.cacheImageDir
 import kotlinx.coroutines.CancellationException
@@ -175,6 +174,7 @@ class ReaderViewModel @JvmOverloads constructor(
                                         !downloadManager.isChapterDownloaded(
                                             it.name,
                                             it.scanlator,
+                                            it.url,
                                             manga.title,
                                             manga.source,
                                         )
@@ -184,6 +184,7 @@ class ReaderViewModel @JvmOverloads constructor(
                                         downloadManager.isChapterDownloaded(
                                             it.name,
                                             it.scanlator,
+                                            it.url,
                                             manga.title,
                                             manga.source,
                                         )
@@ -396,6 +397,7 @@ class ReaderViewModel @JvmOverloads constructor(
             val isDownloaded = downloadManager.isChapterDownloaded(
                 dbChapter.name,
                 dbChapter.scanlator,
+                dbChapter.url,
                 manga.title,
                 manga.source,
                 skipCache = true,
@@ -472,6 +474,7 @@ class ReaderViewModel @JvmOverloads constructor(
             val isNextChapterDownloaded = downloadManager.isChapterDownloaded(
                 nextChapter.name,
                 nextChapter.scanlator,
+                nextChapter.url,
                 manga.title,
                 manga.source,
             )
@@ -755,7 +758,8 @@ class ReaderViewModel @JvmOverloads constructor(
         val chapter = page.chapter.chapter
         val filenameSuffix = " - ${page.number}"
         return DiskUtil.buildValidFilename(
-            "${manga.title} - ${chapter.name}".takeBytes(DiskUtil.MAX_FILE_NAME_BYTES - filenameSuffix.byteSize()),
+            "${manga.title} - ${chapter.name}",
+            DiskUtil.MAX_FILE_NAME_BYTES - filenameSuffix.byteSize(),
         ) + filenameSuffix
     }
 
