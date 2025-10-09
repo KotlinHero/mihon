@@ -206,6 +206,8 @@
     <string name="show_chapter_number">章节编号</string>
     <string name="sort_by_source">按图源</string>
     <string name="sort_by_number">按章节编号</string>
+    <string name="upload_history">上传阅读记录</string>
+    <string name="sync_history">同步阅读记录</string>
     <string name="manga_download">下载</string>
     <string name="download_unread">未读</string>
     <string name="confirm_delete_chapters">确定要删除所选章节吗？</string>

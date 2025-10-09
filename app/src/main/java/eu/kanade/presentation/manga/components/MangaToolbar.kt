@@ -4,6 +4,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Download
 import androidx.compose.material.icons.outlined.FilterList
 import androidx.compose.material.icons.outlined.FlipToBack
+import androidx.compose.material.icons.outlined.History
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.SelectAll
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
@@ -94,6 +96,13 @@ fun MangaToolbar(
                         )
                         return@apply
                     }
+                    add(
+                        AppBar.Action(
+                            title = stringResource(MR.strings.upload_history),
+                            icon = Icons.Outlined.History,
+                            onClick = {},
+                        ),
+                    )
                     if (onClickDownload != null) {
                         add(
                             AppBar.Action(

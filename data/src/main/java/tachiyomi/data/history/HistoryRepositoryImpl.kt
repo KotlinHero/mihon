@@ -61,6 +61,7 @@ class HistoryRepositoryImpl(
 
     override suspend fun upsertHistory(historyUpdate: HistoryUpdate) {
         try {
+            logcat { "readDuration:${historyUpdate.sessionReadDuration}" }
             handler.await {
                 historyQueries.upsert(
                     historyUpdate.chapterId,
